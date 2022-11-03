@@ -2,7 +2,7 @@
   "name": "cozo-nodejs",
   "version": "0.1.1",
   "description": "Cozo database for NodeJS",
-  "main": "native/index.node",
+  "main": "native/6/index.node",
   "files": [
     "native",
     "lib"
@@ -19,7 +19,7 @@
     ]
   },
   "scripts": {
-    "build": "cargo-cp-artifact -nc native/index.node -- cargo build --message-format=json-render-diagnostics",
+    "build": "cargo-cp-artifact -nc native/6/index.node -- cargo build --message-format=json-render-diagnostics",
     "build-debug": "npm run build --",
     "build-release": "npm run build -- --release",
     "install": "npm run build-release",
