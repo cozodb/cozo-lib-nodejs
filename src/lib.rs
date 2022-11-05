@@ -62,44 +62,19 @@ fn query_db(mut cx: FunctionContext) -> JsResult<JsUndefined> {
     };
 
     let query = cx.argument::<JsString>(1)?.value(&mut cx);
-    let params_str = cx.argument::<JsString>(2)?.value(&mut cx);
-
-    let params_map: serde_json::Value = match serde_json::from_str(&params_str) {
-        Ok(m) => m,
-        Err(_) => {
-            let s = cx.string("the given params argument is not valid JSON");
-            cx.throw(s)?
-        }
-    };
-    let params_arg: BTreeMap<_, _> = match params_map {
-        serde_json::Value::Object(m) => m.into_iter().collect(),
-        _ => {
-            let s = cx.string("the given params argument is not a JSON map");
-            cx.throw(s)?
-        }
-    };
+    let params = cx.argument::<JsString>(2)?.value(&mut cx);
 
     let callback = cx.argument::<JsFunction>(3)?.root(&mut cx);
 
     let channel = cx.channel();
 
     std::thread::spawn(move || {
-        let result = db.run_script(&query, &params_arg);
+        let result = db.run_script_str(&query, &params);
         channel.send(move |mut cx| {
             let callback = callback.into_inner(&mut cx);
             let this = cx.undefined();
-            let args = match result {
-                Ok(json) => {
-                    let json_str = cx.string(json.to_string());
-                    vec![cx.null().upcast::<JsValue>(), json_str.upcast()]
-                }
-                Err(err) => {
-                    let err = cx.string(format!("{:?}", err));
-                    vec![err.upcast::<JsValue>()]
-                }
-            };
-
-            callback.call(&mut cx, this, args)?;
+            let json_str = cx.string(result);
+            callback.call(&mut cx, this, vec![json_str.upcast()])?;
 
             Ok(())
         });

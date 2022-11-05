@@ -1,8 +1,8 @@
 {
   "name": "cozo-nodejs",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Cozo database for NodeJS",
-  "main": "native/6/index.node",
+  "main": "index",
   "files": [
     "native",
     "lib"
@@ -19,11 +19,7 @@
     ]
   },
   "scripts": {
-    "build": "cargo-cp-artifact -nc native/6/index.node -- cargo build --message-format=json-render-diagnostics",
-    "build-debug": "npm run build --",
-    "build-release": "npm run build -- --release",
-    "install": "npm run build-release",
-    "test": "cargo test"
+    "package": "node-pre-gyp package"
   },
   "author": "Ziyang Hu",
   "license": "MIT",

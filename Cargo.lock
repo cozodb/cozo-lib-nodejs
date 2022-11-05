@@ -335,9 +335,9 @@ checksum = "5827cebf4670468b8772dd191856768aedcb1b0278a04f989f7766351917b9dc"
 
 [[package]]
 name = "cozo"
-version = "0.1.2"
+version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5a1a58fc75ad85378139f0217ad321820af9443fa5fe5f963e9051f84a930e99"
+checksum = "b513a79ca3c290ca2743450a2931e2eeab19602ab01981f6152f4e77817a0043"
 dependencies = [
  "approx",
  "base64",
@@ -386,9 +386,7 @@ version = "0.1.1"
 dependencies = [
  "cozo",
  "lazy_static",
- "miette",
  "neon",
- "serde_json",
 ]
 
 [[package]]
