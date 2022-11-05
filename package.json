@@ -4,7 +4,6 @@
   "description": "Cozo database for NodeJS",
   "main": "index",
   "files": [
-    "src",
     "index.js",
     "LICENSE.txt"
   ],
@@ -20,6 +19,7 @@
     ]
   },
   "scripts": {
+    "install": "node-pre-gyp install",
     "package": "node-pre-gyp package"
   },
   "author": "Ziyang Hu",
