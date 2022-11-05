@@ -4,8 +4,9 @@
   "description": "Cozo database for NodeJS",
   "main": "index",
   "files": [
-    "native",
-    "lib"
+    "src",
+    "index.js",
+    "LICENSE.txt"
   ],
   "binary": {
     "module_name": "index",
