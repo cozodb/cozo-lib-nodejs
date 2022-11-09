@@ -1,6 +1,6 @@
 {
   "name": "cozo-node",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "Cozo database for NodeJS",
   "main": "index",
   "files": [

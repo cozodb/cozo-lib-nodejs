@@ -1,6 +1,6 @@
 [package]
 name = "cozo-node"
-version = "0.1.4"
+version = "0.1.6"
 description = "Cozo database for NodeJS"
 authors = ["Ziyang Hu"]
 license = "MIT/Apache-2.0/BSD-3-Clause"
@@ -20,7 +20,7 @@ io-uring = ["cozo/io-uring"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-cozo = { version = "0.1.4" }
+cozo = { version = "0.1.6" }
 lazy_static = "1.4.0"
 
 [dependencies.neon]
